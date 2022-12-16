@@ -28,7 +28,10 @@ Implementation Notes
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/Foamyguy/Foamyguy_CircuitPython_GradientHelper.git"
 
-from typing import List, Tuple
+try:
+    from typing import List, Tuple
+except ImportError:
+    pass
 
 
 def tuple_to_hex(tuple_color: Tuple[int, int, int]) -> int:
