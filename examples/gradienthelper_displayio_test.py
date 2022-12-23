@@ -1,15 +1,14 @@
 # SPDX-FileCopyrightText: Copyright (c) 2022 Tim Cocks
 #
 # SPDX-License-Identifier: MIT
+import board
 from simpleio import map_range
-
+from displayio import Group, Bitmap, TileGrid, Palette
 from foamyguy_gradienthelper import (
     linear_gradient,
     polylinear_gradient,
     bezier_gradient,
 )
-from displayio import Group, Bitmap, TileGrid, Palette
-import board
 
 display = board.DISPLAY
 
@@ -25,14 +24,16 @@ linear_palette = Palette(COLOR_COUNT)
 for i, color in enumerate(linear_colors):
     linear_palette[i] = color
 
-linear_tilegrid = TileGrid(linear_bitmap,
-                           pixel_shader=linear_palette,
-                           tile_width=linear_bitmap.width,
-                           tile_height=linear_bitmap.height)
+linear_tilegrid = TileGrid(
+    linear_bitmap,
+    pixel_shader=linear_palette,
+    tile_width=linear_bitmap.width,
+    tile_height=linear_bitmap.height,
+)
 
 main_group.append(linear_tilegrid)
 
-polylinear_colors = polylinear_gradient((0xff00ff, 0x00ffff, 0x00ff00), COLOR_COUNT)
+polylinear_colors = polylinear_gradient((0xFF00FF, 0x00FFFF, 0x00FF00), COLOR_COUNT)
 
 polylinear_bitmap = Bitmap(display.width, 30, COLOR_COUNT)
 
@@ -40,15 +41,17 @@ polylinear_palette = Palette(COLOR_COUNT)
 for i, color in enumerate(polylinear_colors):
     polylinear_palette[i] = color
 
-polylinear_tilegrid = TileGrid(polylinear_bitmap,
-                               pixel_shader=polylinear_palette,
-                               tile_width=polylinear_bitmap.width,
-                               tile_height=polylinear_bitmap.height,
-                               y=30 + 20)
+polylinear_tilegrid = TileGrid(
+    polylinear_bitmap,
+    pixel_shader=polylinear_palette,
+    tile_width=polylinear_bitmap.width,
+    tile_height=polylinear_bitmap.height,
+    y=30 + 20,
+)
 
 main_group.append(polylinear_tilegrid)
 
-bezier_colors = bezier_gradient((0xff00ff, 0x00ffff, 0x00ff00), COLOR_COUNT)
+bezier_colors = bezier_gradient((0xFF00FF, 0x00FFFF, 0x00FF00), COLOR_COUNT)
 
 bezier_bitmap = Bitmap(display.width, 30, COLOR_COUNT)
 
@@ -56,11 +59,13 @@ bezier_palette = Palette(COLOR_COUNT)
 for i, color in enumerate(bezier_colors):
     bezier_palette[i] = color
 
-bezier_tilegrid = TileGrid(bezier_bitmap,
-                               pixel_shader=bezier_palette,
-                               tile_width=bezier_bitmap.width,
-                               tile_height=bezier_bitmap.height,
-                               y=50 + 30 + 20)
+bezier_tilegrid = TileGrid(
+    bezier_bitmap,
+    pixel_shader=bezier_palette,
+    tile_width=bezier_bitmap.width,
+    tile_height=bezier_bitmap.height,
+    y=50 + 30 + 20,
+)
 
 main_group.append(bezier_tilegrid)
 
