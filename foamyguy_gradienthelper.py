@@ -38,7 +38,7 @@ def tuple_to_hex(tuple_color: Tuple[int, int, int]) -> int:
     """
     Convert tuple RGB color to hex int i.e. (255, 0, 0) -> 0xff0000
     :param tuple_color: The color to convert as a tuple with 0-255 ints
-        for each color channel.
+    for each color channel.
 
     :return: The numerical value equal to hex color.
     """
